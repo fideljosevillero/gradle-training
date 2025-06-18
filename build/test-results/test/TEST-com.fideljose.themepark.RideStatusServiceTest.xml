@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.fideljose.themepark.RideStatusServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-06-17T20:41:58.094Z" hostname="DESKTOP-U003SH4" time="0.107">
+  <properties/>
+  <testcase name="unknownRideCausesFailure()" classname="com.fideljose.themepark.RideStatusServiceTest" time="0.029"/>
+  <testcase name="1 gets rollercoaster ride status" classname="com.fideljose.themepark.RideStatusServiceTest" time="0.03"/>
+  <testcase name="2 gets logflume ride status" classname="com.fideljose.themepark.RideStatusServiceTest" time="0.003"/>
+  <testcase name="3 gets teacups ride status" classname="com.fideljose.themepark.RideStatusServiceTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
