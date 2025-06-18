@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.com.amazonaws.event.DeliveryMode
+
 //plugins {
 //    `java-library`
 //    base
@@ -49,7 +51,8 @@ dependencies{
 }
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    include("**/RideStatusServiceTest*")
+    //include("**/RideStatusServiceTest*")
+    //exclude("**/RideStatusServiceTest*")
 }
 tasks.test {
     useJUnitPlatform()
@@ -67,3 +70,15 @@ tasks.named<Jar>("jar") {
 }
 //*** fin
 
+testing {
+    suites {
+        register<JvmTestSuite>("integrationTest") {
+            dependencies {
+                implementation(project())
+            }
+        }
+    }
+}
+tasks.named("check") {
+    dependsOn(testing.suites.named("integrationTest"))
+}

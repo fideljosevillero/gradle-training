@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.fideljose.themepark.RideStatusServiceIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-06-18T18:43:53.239Z" hostname="DESKTOP-U003SH4" time="0.042">
+  <properties/>
+  <testcase name="testMainMethod()" classname="com.fideljose.themepark.RideStatusServiceIntegrationTest" time="0.042"/>
+  <system-out><![CDATA[Current status of teacups is 'not spinning'
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
