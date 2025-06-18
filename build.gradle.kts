@@ -26,23 +26,44 @@
 
 plugins {
     java
+    application
 }
 repositories{
     mavenCentral()
+}
+application {
+    mainClass.set("com.fideljose.themepark.RideStatusService") // Reemplaza con tu clase principal
 }
 tasks.named<Jar>("jar") {
     manifest {
         attributes("Main-Class" to "com.fideljose.themepark.RideStatusService")
     }
 }
+object Versions {
+    const val JUNIT_JUPITER_VERSION = "5.7.2"
+}
 dependencies{
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.JUNIT_JUPITER_VERSION}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.JUNIT_JUPITER_VERSION}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.JUNIT_JUPITER_VERSION}")
 }
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
+    include("**/RideStatusServiceTest*")
 }
 tasks.test {
     useJUnitPlatform()
 }
+//*** config tasks from plugins
+tasks.named<JavaCompile>("compileJava") {
+    options.isVerbose = true
+}
+tasks.named<ProcessResources>("processResources"){
+   include("**/*.txt")
+    //exclude("**/*.txt")
+}
+tasks.named<Jar>("jar") {
+    archiveFileName = "customeFileName.jar"
+}
+//*** fin
+
