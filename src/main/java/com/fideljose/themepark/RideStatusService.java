@@ -20,6 +20,7 @@ public class RideStatusService {
         String rideStatus = getRideStatus(rideName);
 
         System.out.printf("Current status of %s is '%s'%n", rideName, rideStatus);
+        System.out.printf(System.getProperty("java.version"));
     }
 
     public static String getRideStatus(String ride) {

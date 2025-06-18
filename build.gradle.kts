@@ -70,9 +70,11 @@ tasks.named<Jar>("jar") {
 }
 //*** fin
 
+//*** integration test
 testing {
     suites {
         register<JvmTestSuite>("integrationTest") {
+            useJUnitJupiter()
             dependencies {
                 implementation(project())
             }
@@ -81,4 +83,10 @@ testing {
 }
 tasks.named("check") {
     dependsOn(testing.suites.named("integrationTest"))
+}
+
+java{
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
 }
