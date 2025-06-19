@@ -29,7 +29,12 @@ import org.gradle.internal.impldep.com.amazonaws.event.DeliveryMode
 plugins {
     java
     application
+    `maven-publish`
 }
+
+group = "com.fideljose"
+version = "0.1.0-SNAPSHPT"
+
 repositories{
     mavenCentral()
 }
@@ -88,5 +93,29 @@ tasks.named("check") {
 java{
     toolchain {
         languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+// set version to test
+tasks.named<Test>("test") {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+
+//*** publicar
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+    repositories {
+        maven {
+            url = uri("https://kslsbvlsbvlsvflvfjbjfbvfjbvjb.amazon.com/maven/demo")
+            credentials {
+                username = "aws"
+                password = System.getenv("ARTEFACT_AUTH_TOKEN")
+            }
+        }
     }
 }

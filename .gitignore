@@ -28,3 +28,7 @@ replay_pid*
 .html
 .lock
 .xml
+.gradle/
+build/
+out/
+.idea/

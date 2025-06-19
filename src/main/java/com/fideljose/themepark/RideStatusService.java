@@ -12,7 +12,7 @@ import java.util.Random;
 public class RideStatusService {
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("A single ride name must be passed");
+            System.out.println("A single ride name must be passed, put: \n teacups \n logflume \n or rollercoaster");
             System.exit(1);
         }
 
@@ -20,7 +20,7 @@ public class RideStatusService {
         String rideStatus = getRideStatus(rideName);
 
         System.out.printf("Current status of %s is '%s'%n", rideName, rideStatus);
-        System.out.printf(System.getProperty("java.version"));
+        System.out.printf("version -> " + System.getProperty("java.version"));
     }
 
     public static String getRideStatus(String ride) {
