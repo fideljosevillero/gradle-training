@@ -37,6 +37,7 @@ version = "0.1.0-SNAPSHPT"
 
 repositories{
     mavenCentral()
+    mavenLocal()
 }
 application {
     mainClass.set("com.fideljose.themepark.RideStatusService") // Reemplaza con tu clase principal
@@ -53,6 +54,7 @@ dependencies{
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.JUNIT_JUPITER_VERSION}")
     testImplementation("org.junit.jupiter:junit-jupiter-params:${Versions.JUNIT_JUPITER_VERSION}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.JUNIT_JUPITER_VERSION}")
+    implementation("com.fideljose:artefacts_1:0.1.0-SNAPSHPT")
 }
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
