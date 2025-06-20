@@ -1,6 +1,7 @@
 //  gradle publishToMavenLocal --no-configuration-cache
 plugins {
-    `java-library`
+    //`java-library`
+    java
     id("org.springframework.boot") version "3.2.0"
     id("io.spring.dependency-management") version "1.1.4"
     `maven-publish`
@@ -13,7 +14,23 @@ repositories{
 }
 
 group = "com.fideljose"
-version = "0.1.0-SNAPSHOT"
+version = "1.1.0-SNAPSHOT"
+
+// Configuración específica para Spring Boot
+springBoot {
+    mainClass.set("com.fideljose.theme_park_api.ThemeParkApplication") // Reemplaza con tu clase principal
+}
+// Deshabilita el JAR normal si no lo necesitas
+//tasks.jar {
+//    enabled = false
+//}
+// Configura el JAR ejecutable de Spring Boot
+tasks.bootJar {
+    archiveClassifier.set("boot")
+    manifest {
+        attributes("Start-Class" to "com.fideljose.theme_park_api.ThemeParkApplication")
+    }
+}
 
 dependencies{
     // 1. Primero importa el BOM (control central de versiones)
@@ -37,6 +54,8 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
+            // Publica el BootJar como artefacto principal (archivo ...-boot.jar)
+            artifact(tasks.bootJar)
         }
     }
     repositories {
@@ -49,10 +68,3 @@ publishing {
         }
     }
 }
-tasks.withType<Jar> {
-    enabled = true
-}
-//tasks.register<Jar>("sourceJar") {
-//    from(sourceSets.main.get().allJava)
-//    archiveClassifier.set("sources")
-//}
